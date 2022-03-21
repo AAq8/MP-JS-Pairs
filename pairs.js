@@ -36,18 +36,20 @@ Array.prototype.getRandom = function () {
   return this.splice(Math.floor(Math.random() * this.length), 1)[0];
 };
 
-function pairs(names) {
+function pairs(names = []) {
   // Your code goes here
-  if (names == null) {
-    let empty = [];
-    return empty;
-  } else if (names.length == 0) {
-    let empty = [];
-    return empty;
-  } else if (names.length == 2) {
-    const pair = [1];
-    return pair;
+  if (names.length === 0) return [];
+
+  const result = [];
+  while (names.length > 1) {
+    const firstName = names.getRandom();
+    const secondName = names.getRandom();
+    const pair = [firstName, secondName];
+    result.push(pair);
+    console.log(result);
   }
+  if (names.length === 1) result.push(names);
+  return result;
 }
 
 module.exports = pairs;
